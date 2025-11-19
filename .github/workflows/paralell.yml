@@ -1,4 +1,4 @@
-name: CI NodeJS-paralell
+name: CI NodeJS-paralelll
 
 on:
   push:
