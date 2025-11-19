@@ -2,7 +2,7 @@ name: CI NodeJS-paralell
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -30,12 +30,8 @@ jobs:
         uses: mridang/action-test-reporter@v1
         with:
           working-directory: .
-          coverage-file: coverage/lcov.info 
+          coverage-file: coverage/lcov.info
           upload-coverage-report: true
-
-
-
-
 
   code-quality:
     runs-on: ubuntu-latest

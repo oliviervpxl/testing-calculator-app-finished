@@ -1,42 +1,34 @@
 name: CI NodeJS23
 on:
- push:
-  branches: [ main ]
- pull_request:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v5.0.0
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
 
-    
-    
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v6.0.0
-      with:
-        node-version: 18
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6.0.0
+        with:
+          node-version: 18
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    
-  
+      - name: Run unit tests
+        run: npm test
 
-    
-      
-    
-    - name: Run unit tests
-      run: npm test
+      - name: Run tests and generate coverage
+        run: npm test -- --coverage
 
-    - name: Run tests and generate coverage
-      run: npm test -- --coverage
-
-    - name: Code Coverage Report
-      uses: mridang/action-test-reporter@v1
-      with:
-        working-directory: .
-        coverage-file: coverage/lcov.info 
-        upload-coverage-report: true
+      - name: Code Coverage Report
+        uses: mridang/action-test-reporter@v1
+        with:
+          working-directory: .
+          coverage-file: coverage/lcov.info
+          upload-coverage-report: true
