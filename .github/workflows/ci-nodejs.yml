@@ -1,4 +1,4 @@
-name: CI NodeJS2
+name: CI NodeJS23
 on:
  push:
   branches: [ main ]
